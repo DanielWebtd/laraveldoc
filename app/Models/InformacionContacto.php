@@ -10,4 +10,9 @@ class InformacionContacto extends Model
     use HasFactory;
 
     protected $table = 'informacion_contacto';
+
+    public function hola() {
+
+        return $this->primaryKey;
+    }
 }

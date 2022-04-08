@@ -9,5 +9,10 @@ class Banco extends Model
 {
     use HasFactory;
     
-    protected $table = 'bancos';
+    /* protected $table = 'bancos'; */
+
+    public function hola() {
+
+        return $this->primaryKey;
+    }
 }

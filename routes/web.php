@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,17 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('query-builder', function() {
-    
-    $id = DB::table('users')->insertGetId([
-        'name' => 'WEBTD',
-        'email' => 'tinajero2@webtd.com',
-        'email_verified_at' => now(),
-        'password' => Hash::make('12345678'),
-        'remember_token' => null,
-        'created_at' => now(),
-        'updated_at' => now()
-    ]);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-    return 'ok';
-});
+require __DIR__.'/auth.php';
