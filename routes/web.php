@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QueryBuilderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
+
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+Route::get('filtros', [QueryBuilderController::class, 'filtros'])->name('query.builder.filtros');
+Route::get('pruebas', [QueryBuilderController::class, 'pruebas'])->name('query.builder');
